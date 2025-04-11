@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <img src="${imageUrl}" alt="" class="post-image" />
           <div class="post-info">
             <h3>${post.title}</h3>
-            <p>${post.content || ''}</p>
+            <p>${post.content}</p>
             <div class="post-meta">
               <span><i class="fas fa-user"></i> ${post.writer}</span>
               <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
@@ -41,12 +41,12 @@ document.addEventListener('DOMContentLoaded', function () {
       postGrid.innerHTML = '<p style="color:red;">게시글을 불러오는 데 실패했습니다.</p>';
     });
 
-  // 추천 영화 데이터 (더미)
+  // 추천 영화 데이터 (더미) + 이 부분은 마지막에 연동하겠습니다.
   const movies = [
-    { id: 101, title: '영화 제목 더미1', director: '크리스토퍼 놀란', rating: 9.5, genre: '스릴러' },
-    { id: 102, title: '영화 제목 더미2', director: '데이미언 셔젤', rating: 9.0, genre: '드라마' },
-    { id: 103, title: '영화 제목 더미3', director: '최동훈', rating: 8.9, genre: '액션' },
-    { id: 104, title: '영화 제목 더미4', director: '존 카니', rating: 8.8, genre: '코미디' },
+    { id: 1, title: '영화 제목 더미1', director: '크리스토퍼 놀란', rating: 9.5, genre: '스릴러' },
+    { id: 2, title: '영화 제목 더미2', director: '데이미언 셔젤', rating: 9.0, genre: '드라마' },
+    { id: 3, title: '영화 제목 더미3', director: '최동훈', rating: 8.9, genre: '액션' },
+    { id: 4, title: '영화 제목 더미4', director: '존 카니', rating: 8.8, genre: '코미디' },
   ];
 
   const movieList = document.getElementById('movieList');

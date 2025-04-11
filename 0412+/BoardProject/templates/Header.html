@@ -11,6 +11,10 @@
   </div>
   
   <nav class="nav-links" id="navLinks">
+    <a href="{% url 'movie_list' %}" class="{% if request.resolver_match.url_name == 'movie_list' %}active{% endif %}">
+      <i class="fas fa-film"></i> 추천 영화
+    </a>
+
     <a href="{% url 'post_list' %}" class="{% if request.resolver_match.url_name == 'post_list' %}active{% endif %}">
       <i class="fas fa-list"></i> 게시글 목록
     </a>

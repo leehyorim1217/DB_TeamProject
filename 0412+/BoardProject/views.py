@@ -10,7 +10,6 @@ from .forms import CommentForm
 from django.http import HttpResponseForbidden
 from django.views.decorators.http import require_http_methods
 
-
 def boardlist(request):
     return render(request, 'boardlist.html')
 
@@ -19,6 +18,14 @@ def boardwrite(request):
 
 def main_page(request):
     return render(request, 'MainPage.html')
+
+def movie_list(request):
+    return render(request, 'MovieList.html')
+
+def movie_detail(request, movie_id): 
+    movie = get_object_or_404(Movie, id=movie_id)
+    return render(request, 'MovieDetail.html')
+
 
 @login_required
 def post_list(request):
@@ -32,6 +39,7 @@ def post_list_api(request):
         data.append({
             'id': post.id,
             'title': post.title,
+            'content': post.content,
             'writer': post.writer.username if hasattr(post.writer, 'username') else str(post.writer),
             'date': post.date.strftime('%Y-%m-%d %H:%M') if post.date else ''
         })
@@ -92,7 +100,8 @@ def delete_post(request, post_id):
         return HttpResponseForbidden("삭제 권한이 없습니다.")
 
     post.delete()
-    return JsonResponse({'message': '삭제 성공'}, status=200)
+    return redirect('post_list') #삭제 성공 json 메세지 출력하는 대신 리다이렉트
+    #return JsonResponse({'message': '삭제 성공'}, status=200)
     #여기까지
 
 def post_detail(request, post_id):
@@ -175,3 +184,4 @@ def delete_comment(request, comment_id):
     post_id = comment.post.id
     comment.delete()
     return redirect('post_detail', post_id=post_id)
+
