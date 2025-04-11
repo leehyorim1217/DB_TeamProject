@@ -13,8 +13,9 @@
   <h2 class="detail-title">{{ post.title }}</h2>
 
   <div class="detail-meta">
-    <span class="detail-writer">작성자: {{ post.writer }}</span>
-    <span class="detail-date">작성일: {{ post.created_at }}</span>
+    <span class="detail-writer">글 번호: {{ post.id }}</span>
+    <span class="detail-writer">작성자: {{ post.writer}}</span>
+    <span class="detail-date">작성일: {{ post.date|date:"Y-m-d H:i" }}</span>
   </div>
 
   <hr class="divider">

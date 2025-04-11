@@ -31,8 +31,9 @@ def post_list_api(request):
         data.append({
             'id': post.id,
             'title': post.title,
-            'writer': post.writer,
-            'date': post.date.strftime('%Y-%m-%d %H:%M')
+            'writer': post.writer.username if post.writer else '탈퇴한 사용자', #작성자 보이지 않는 부분과 관련해 수정한 부분입니다.
+            'date': post.date.strftime('%Y-%m-%d %H:%M'),
+            'content': post.content #메인 화면에 표시하기 위해 추가했습니다...
         })
     return JsonResponse(data, safe=False)
 
@@ -41,7 +42,7 @@ def post_write(request):
     if request.method == "POST":
         title = request.POST.get('title')
         content = request.POST.get('content')
-        writer = request.POST.get('writer')
+        writer = request.user #작성자 보이지 않는 부분과 관련해 수정한 부분입니다. POST 방식으로 받아오지 않게 수정했습니다.
         
         Post.objects.create(title=title, content=content, writer=writer)
         return redirect('post_list')  # 저장 후 목록 페이지로 이동
