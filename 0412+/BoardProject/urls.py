@@ -14,7 +14,7 @@ urlpatterns = [
    #path('delete/<int:post_id>/', views.delete_post, name='delete_post'), 삭제되었다는 페이지를 출력하는 대신, 게시글 목록으로 리다이렉트 되도록 수정했습니다.
    
     path('movies/', views.movie_list, name='movie_list'), #영화 게시판 입니다.
-   path('movies/<int:movie_id>/', views.movie_detail, name='movie_detail'),
+    path('movies/<int:movie_id>/', views.movie_detail, name='movie_detail'), #영화 게시판 상세 뷰입니다.
 
     path('post/<int:post_id>/', views.post_detail, name='post_detail'),
     path('boardlist/', views.boardlist, name='boardlist'),

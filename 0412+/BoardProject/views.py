@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment
+from .models import Post, Comment, Movie
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
@@ -23,8 +23,18 @@ def movie_list(request):
     return render(request, 'MovieList.html')
 
 def movie_detail(request, movie_id): 
+    if Movie.objects.count() == 0:
+        for i in range(1, 11):
+            Movie.objects.create(
+                title=f"영화 더미데이터{i}",
+                overview=f"내용 더미{i} - 더미데이터 {i}번째",
+                release_date=f"2024-04-{(i % 30 + 1):02d}",
+                vote_average=i % 11,
+                genres=['액션', '드라마', 'SF', '로맨스', '애니메이션'][i % 5] + ',' + ['판타지', '스릴러', '코미디', '가족', '뮤지컬'][i % 5]
+            ) # 더미 데이터입니다. 첫 요청 시 DB에 내용이 없을 경우, 더미 데이터 10개를 생성해 삽입합니다. 삭제해주시면 됩니다.
+
     movie = get_object_or_404(Movie, id=movie_id)
-    return render(request, 'MovieDetail.html')
+    return render(request, 'MovieDetail.html', {'movie': movie})
 
 
 @login_required

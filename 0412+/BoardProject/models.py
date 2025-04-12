@@ -21,3 +21,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.author.username} - {self.content[:20]}'
+    
+class Movie(models.Model): #이부분 실제 모델로 연결할 필요가 있습니다. 더미 데이터입니다.
+    title = models.CharField(max_length=100)
+    overview = models.TextField()
+    release_date = models.DateField()
+    vote_average = models.FloatField()
+    genres = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
