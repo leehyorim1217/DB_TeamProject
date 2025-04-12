@@ -15,9 +15,9 @@
 
 [movies 폴더 안에 templates 파일 만들어서 movie_list.html에 데이터 받을 기본 웹 등록] (1~17줄)
 
-[[movies 폴더 안에 urls.py 파일 만들어서 path연결] (5줄)
+[movies 폴더 안에 urls.py 파일 만들어서 path연결] (5줄)
 
-[movies 폴더 안에 models.py에 Movie클래스 작성] (3~11줄_
+[movies 폴더 안에 models.py에 Movie클래스 작성] (3~11줄)
 
 [boardproject 폴더 안 urls.py에 데이터 받을 사이트로 연결하는 path 설정](18,19줄)
 
@@ -30,4 +30,9 @@
 
 [moviecommunity(리뷰추가).py 코드에 데이터 넣기 위한 반복횟수 증가] 62줄
 
-[boardproject\urls.py 안 경로 설정에서 영화 리스트 출력하기 위해 주석처리] (16,17줄)
+[boardproject\urls.py 코드 중 경로 설정에서 영화 리스트 출력하기 위해 주석처리] (16,17줄)
+
+[movies폴더 안 models.py에 review model 클래스 생성]
+영화와 리뷰를 매칭시키기 위함.python manage.py shell
+
+[movies\models.py의 무비 클래스에 리뷰와 연동하기 위한 코드 추가](4번째 줄)
