@@ -169,4 +169,70 @@
   background-color: #ffa000;
 }
 
-  
+.replies {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  padding-left: 1rem;
+  border-left: 2px solid #ddd;
+}
+
+.replies .comment-item {
+  background-color: #fefefe;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  padding: 0.9rem;
+}
+
+.replies .comment-author {
+  font-weight: bold;
+  color: #666;
+}
+
+.replies .comment-meta {
+  font-size: 0.75rem;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+}
+
+.replies .comment-actions a {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.replies .comment-actions a:hover {
+  text-decoration: underline;
+}
+
+/* 대댓글 작성 폼 */
+.reply-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reply-input-group textarea {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 0.9rem;
+  height: 40px;
+}
+
+.reply-input-group button {
+  height: 40px;
+  padding: 0 1rem;
+  background-color: #4a6da7;
+  color: white;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.reply-input-group button:hover {
+  background-color: #ffa000;
+}

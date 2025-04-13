@@ -60,7 +60,7 @@
         </div>
 
         <!-- 대댓글 출력 -->
-        <div class="replies" style="margin-left: 30px; border-left: 1px solid #ccc; padding-left: 10px;">
+        <div class="replies">
           {% for reply in comment.replies.all %}
             <div class="comment-item">
               <div class="comment-author">{{ reply.author.username|default:"탈퇴한 사용자" }}</div>
@@ -76,16 +76,19 @@
               </div>
             </div>
           {% endfor %}
+
+          <!-- 대댓글 입력 폼 (수정됨) -->
+          <div class="reply-form">
+            <form method="post" action="{% url 'add_comment' post.id %}">
+              {% csrf_token %}
+              <input type="hidden" name="parent_id" value="{{ comment.id }}">
+              <div class="reply-input-group">
+                <textarea name="content" rows="1" placeholder="답글 작성..."></textarea>
+                <button type="submit">답글</button>
+              </div>
+            </form>
+          </div>
         </div>
-
-        <!-- 대댓글 입력 폼 -->
-        <form method="post" action="{% url 'add_comment' post.id %}">
-          {% csrf_token %}
-          <input type="hidden" name="parent_id" value="{{ comment.id }}">
-          <textarea name="content" rows="1" placeholder="답글 작성..."></textarea>
-          <button type="submit">답글</button>
-        </form>
-
       </div>
       {% endif %}
     {% endfor %}

@@ -33,7 +33,6 @@
   transition: transform var(--transition-speed) ease;
 }
 
-
 .notice h3 {
   margin: 0 0 10px;
   color: var(--accent-color);
@@ -65,7 +64,7 @@
   box-shadow: var(--shadow-md);
 }
 
-/* 슬라이더 컨테이너 */
+/* 슬라이더 */
 .slider-container {
   position: relative;
   overflow: hidden;
@@ -86,7 +85,6 @@
   flex-shrink: 0;
 }
 
-/* 슬라이드 버튼 */
 .slide-btn {
   position: absolute;
   top: 50%;
@@ -114,15 +112,9 @@
   transform: translateY(-50%) scale(1.1);
 }
 
-.slide-btn.prev {
-  left: 15px;
-}
+.slide-btn.prev { left: 15px; }
+.slide-btn.next { right: 15px; }
 
-.slide-btn.next {
-  right: 15px;
-}
-
-/* 슬라이더 */
 .slider-indicators {
   position: absolute;
   bottom: 15px;
@@ -175,7 +167,6 @@
   gap: 8px;
 }
 
-/* 최신 게시글 레이아웃 */
 .post-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -225,7 +216,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
   max-width: 160px;
 }
 
@@ -235,7 +225,7 @@
   font-size: 0.95em;
   line-height: 1.5;
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -255,9 +245,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   display: inline-block;
-} /*긴 닉네임 자르기*/
+}
 
-/* 추천 영화 */
+/* 추천 영화 (통합) */
 .recommend-container {
   width: 320px;
   background-color: var(--bg-white);
@@ -266,69 +256,64 @@
   box-shadow: var(--shadow-sm);
 }
 
-.movie-list {
+.dummy-movie-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.movie-card {
-  background-color: var(--bg-white);
-  border-radius: var(--border-radius);
+.dummy-movie-card {
+  background-color: #f9f9f9;
   padding: 16px;
+  border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-speed) ease;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.dummy-movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.dummy-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.dummy-title:hover {
+  color: var(--primary-color);
+}
+
+.dummy-meta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-left: 4px solid transparent;
+  font-size: 0.95em;
 }
 
-.movie-card:hover {
-  background-color: #f0f8ff;
-  border-left: 4px solid var(--primary-color);
-  transform: translateX(5px);
-}
-
-.movie-info {
-  flex: 1;
-}
-
-.movie-info strong {
-  font-size: 1.05em;
-  color: var(--text-primary);
-  margin-bottom: 5px;
-  display: block;
-}
-
-.movie-info span {
+.dummy-meta .genre {
   color: var(--text-secondary);
-  font-size: 0.9em;
 }
 
-.movie-rating {
-  background-color: #ffecb3;
-  color: #e65100;
-  padding: 5px 10px;
-  border-radius: 20px;
+.dummy-meta .rating {
+  color: var(--accent-color);
   font-weight: bold;
-  font-size: 0.9em;
-  display: flex;
-  align-items: center;
-  gap: 3px;
 }
 
-/* 확대해도 슬라이더 안 깨지게 */
+/* 반응형 */
 @media (max-width: 900px) {
   .content-wrapper {
     flex-direction: column;
   }
-  
+
   .recommend-container {
     width: 100%;
     margin-top: 30px;
   }
-  
+
   .slider img {
     height: 250px;
   }
@@ -338,18 +323,17 @@
   .post-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .slider img {
     height: 200px;
   }
-  
+
   .main-page {
     padding: 15px;
   }
-  
+
   .slide-btn {
     width: 36px;
     height: 36px;
   }
 }
-  
